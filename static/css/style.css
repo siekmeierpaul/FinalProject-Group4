@@ -1,0 +1,23 @@
+.jumbotron {
+    background-color: rgb(185, 51, 51);
+}
+h1, p, h4 {
+    text-align: center;
+}
+.mynav {
+    height: 100px;
+}
+.navbar {
+    background-color: transparent !important;
+}
+.navbar .navbar-brand {
+    color: black;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+.navbar .navbar-nav {
+    margin: 0 auto;
+}
+body {
+    background-color: rgb(233, 161, 173) !important;
+}
