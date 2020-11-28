@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"></link>
 
-    <link rel='shortcut icon' type='image/png' href="img/brokenHeart.png">
+    <link rel='shortcut icon' type='image/png' href={{ url_for('static', filename='brokenHeart.png') }}>
 
     <title>Divorce Result</title>
   </head>
@@ -23,9 +23,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="index.html">Summary</a>
-            <a class="navbar-brand" href="data.html"><img src='img/brokenHeart.png' class='img-responsive'>Divorce Predictor</a>
-            <a class="nav-link" href="results.html">Result Analysis</a>
+            <a class="nav-link" href="/">Summary</a>
+            <a class="navbar-brand" href="/data"><img src={{ url_for('static', filename='brokenHeart.png') }} class='img-responsive'>Divorce Predictor</a>
+            <a class="nav-link" href="/results">Result Analysis</a>
           </div>
         </div>
       </nav>
