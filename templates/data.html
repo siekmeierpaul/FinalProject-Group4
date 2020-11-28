@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"></link>
 
+    <link rel='shortcut icon' type='image/png' href={{ url_for('static', filename='brokenHeart.png') }}>
+
     <title>Divorce Survey</title>
   </head>
   <body>
@@ -21,13 +23,40 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" href="/"><span class="sr-only">(current)</span>Summary</a>
+              <a class="nav-link active" href="/">Summary</a>
               <a class="navbar-brand" href="/data"><img src={{ url_for('static', filename='brokenHeart.png') }} class='img-responsive'>Divorce Predictor</a>
               <a class="nav-link" href="/results">Result Analysis</a>
             </div>
           </div>
         </nav>
       </div>
+      <h3>For each question in the survey answer 1 through 5. (1 being strongly disagree and 5 being strongly agree) </h3>
+      <br />
+      <div id="wrapper">
+        <form id="quiz">
+          <!-- Question 1 -->
+          <h5>1.Sample Question</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr1" value="0">1</label>
+          <label><input type="radio" name="Atr1" value="1">2</label>
+          <label><input type="radio" name="Atr1" value="2">3</label>
+          <label><input type="radio" name="Atr1" value="3">4</label>
+          <label><input type="radio" name="Atr1" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>2.Sample Question</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr2" value="0">1</label>
+          <label><input type="radio" name="Atr2" value="1">2</label>
+          <label><input type="radio" name="Atr2" value="2">3</label>
+          <label><input type="radio" name="Atr2" value="3">4</label>
+          <label><input type="radio" name="Atr2" value="4">5</label>
+          <br />
+      
+          <button type="submit" id="submit" onclick="tabulateAnswer()">Submit</button>
+          <button type="reset" id="reset" onclick="resetAnswer()">Reset</button>
+        </form>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
