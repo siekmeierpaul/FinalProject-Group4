@@ -30,12 +30,13 @@
           </div>
         </nav>
       </div>
-      <h3>For each question in the survey answer 1 through 5. (1 being strongly disagree and 5 being strongly agree) </h3>
+      <h3>For each statement in the survey answer 1 through 5.
+      (1 being strongly disagree and 5 being strongly agree) </h3>
       <br />
       <div id="wrapper">
         <form id="quiz" action="{{url_for('predict')}}" method="post">
           <!-- Question 1 -->
-          <h5>1. If one of us apologizes when our arguments deteriorates, the argument ends.</h5>
+          <h5>1. If one of us apologizes when our argument deteriorates, the argument ends.</h5>
           <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
           <!-- The value is which answer the choice corresponds to. -->
           <label><input type="radio" name="Atr1" value="0">1</label>
