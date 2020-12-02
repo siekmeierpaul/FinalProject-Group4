@@ -36,7 +36,16 @@ def predict():
     prediction = pickle_model.predict(final_features)
     print(prediction)
 
-    webpage = render_template("data.html")
+    if prediction == 1:
+        result = "Divorced"
+        print(result)
+    elif prediction == 0:
+        result = "Married"
+        print(result)
+    else:
+        print("Something didn't work")
+
+    webpage = render_template("results.html", result = result)
     return webpage
 
 if __name__ == '__main__':
