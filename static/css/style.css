@@ -1,14 +1,23 @@
 .jumbotron {
     background-color: rgb(185, 51, 51);
 }
-h1, p, h4 {
+h3 {
+    font-family: "Lucida Handwriting", cursive;
+}
+h1, h2, h4, h6 {
     text-align: center;
+    font-family: "Lucida Handwriting", cursive;
 }
 .mynav {
     height: 100px;
+    background-image: url("../cherry_blossom.png");
 }
 .navbar {
+    padding-top: 25px;
     background-color: transparent !important;
+}
+.navbar .nav-link{
+    font-weight: bold;
 }
 .navbar .navbar-brand {
     color: black;

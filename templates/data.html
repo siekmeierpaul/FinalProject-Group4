@@ -12,32 +12,32 @@
 
     <link rel='shortcut icon' type='image/png' href={{ url_for('static', filename='brokenHeart.png') }}>
 
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-
     <title>Divorce Survey</title>
   </head>
   <body>
-    <div class='container'>
-      <div class='mynav'>
-        <nav class="navbar navbar-expand-lg navbar-light" >
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="/">Summary</a>
-              <a class="navbar-brand" href="/data"><img src={{ url_for('static', filename='brokenHeart.png') }} class='img-responsive'>Divorce Predictor</a>
-              <a class="nav-link" href="/results">Result Analysis</a>
-            </div>
+    <div class='mynav'>
+      <nav class="navbar navbar-expand-lg navbar-light" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/">Summary</a>
+            <a class="navbar-brand" href="/data"><img src={{ url_for('static', filename='brokenHeart.png') }} class='img-responsive'>Divorce Predictor</a>
+            <a class="nav-link" href="/results">Result Analysis</a>
           </div>
-        </nav>
-      </div>
-      <h3>For each question in the survey answer 1 through 5. (1 being strongly disagree and 5 being strongly agree) </h3>
+        </div>
+      </nav>
+    </div>
+    <div class= 'container'>
+      <br />
+      <h3>For each statement in the survey answer 1 through 5.
+      (1 being strongly disagree and 5 being strongly agree) </h3>
       <br />
       <div id="wrapper">
-        <form id="quiz">
+        <form id="quiz" action="{{url_for('predict')}}" method="post">
           <!-- Question 1 -->
-          <h5>1.Sample Question</h5>
+          <h5>1. If one of us apologizes when our argument deteriorates, the argument ends.</h5>
           <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
           <!-- The value is which answer the choice corresponds to. -->
           <label><input type="radio" name="Atr1" value="0">1</label>
@@ -47,7 +47,7 @@
           <label><input type="radio" name="Atr1" value="4">5</label>
           <br />
           <!-- Question 2 -->
-          <h5>2.Sample Question</h5>
+          <h5>2. I know we can ignore our differences, even if things get hard sometimes.</h5>
           <!-- Here are the choices for the second question. -->
           <label><input type="radio" name="Atr2" value="0">1</label>
           <label><input type="radio" name="Atr2" value="1">2</label>
@@ -55,12 +55,479 @@
           <label><input type="radio" name="Atr2" value="3">4</label>
           <label><input type="radio" name="Atr2" value="4">5</label>
           <br />
-      
-          <button type="submit" id="submit" onclick="tabulateAnswer()">Submit</button>
-          <button type="reset" id="reset" onclick="resetAnswer()">Reset</button>
+          <h5>3. When we need to, we can take our argument from the beginning and correct it.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr3" value="0">1</label>
+          <label><input type="radio" name="Atr3" value="1">2</label>
+          <label><input type="radio" name="Atr3" value="2">3</label>
+          <label><input type="radio" name="Atr3" value="3">4</label>
+          <label><input type="radio" name="Atr3" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>4. When I discuss with my spouse, to contact him will eventually work.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr4" value="0">1</label>
+          <label><input type="radio" name="Atr4" value="1">2</label>
+          <label><input type="radio" name="Atr4" value="2">3</label>
+          <label><input type="radio" name="Atr4" value="3">4</label>
+          <label><input type="radio" name="Atr4" value="4">5</label>
+          <br />
+          <h5>5. The time I spend with my spouse is special.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr5" value="0">1</label>
+          <label><input type="radio" name="Atr5" value="1">2</label>
+          <label><input type="radio" name="Atr5" value="2">3</label>
+          <label><input type="radio" name="Atr5" value="3">4</label>
+          <label><input type="radio" name="Atr5" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>6. We don't spend enough time as partners at home together.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr6" value="0">1</label>
+          <label><input type="radio" name="Atr6" value="1">2</label>
+          <label><input type="radio" name="Atr6" value="2">3</label>
+          <label><input type="radio" name="Atr6" value="3">4</label>
+          <label><input type="radio" name="Atr6" value="4">5</label>
+          <br />
+          <h5>7. We are like two strangers who share the same environment at home rather than family.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr7" value="0">1</label>
+          <label><input type="radio" name="Atr7" value="1">2</label>
+          <label><input type="radio" name="Atr7" value="2">3</label>
+          <label><input type="radio" name="Atr7" value="3">4</label>
+          <label><input type="radio" name="Atr7" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>8. I enjoy holidays with my spouse.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr8" value="0">1</label>
+          <label><input type="radio" name="Atr8" value="1">2</label>
+          <label><input type="radio" name="Atr8" value="2">3</label>
+          <label><input type="radio" name="Atr8" value="3">4</label>
+          <label><input type="radio" name="Atr8" value="4">5</label>
+          <br />
+          <h5>9. I enjoy traveling with my spouse.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr9" value="0">1</label>
+          <label><input type="radio" name="Atr9" value="1">2</label>
+          <label><input type="radio" name="Atr9" value="2">3</label>
+          <label><input type="radio" name="Atr9" value="3">4</label>
+          <label><input type="radio" name="Atr9" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>10. My spouse and I share most of the same goals.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr10" value="0">1</label>
+          <label><input type="radio" name="Atr10" value="1">2</label>
+          <label><input type="radio" name="Atr10" value="2">3</label>
+          <label><input type="radio" name="Atr10" value="3">4</label>
+          <label><input type="radio" name="Atr10" value="4">5</label>
+          <br />
+          <h5>11. I think that one day in the future, when I look back, I see that my spouse and I have been in harmony with each other.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr11" value="0">1</label>
+          <label><input type="radio" name="Atr11" value="1">2</label>
+          <label><input type="radio" name="Atr11" value="2">3</label>
+          <label><input type="radio" name="Atr11" value="3">4</label>
+          <label><input type="radio" name="Atr11" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>12. My spouse and I have similar values in terms of personal freedom.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr12" value="0">1</label>
+          <label><input type="radio" name="Atr12" value="1">2</label>
+          <label><input type="radio" name="Atr12" value="2">3</label>
+          <label><input type="radio" name="Atr12" value="3">4</label>
+          <label><input type="radio" name="Atr12" value="4">5</label>
+          <br />
+          <h5>13. My spouse and I enjoy the same forms of entertainment.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr13" value="0">1</label>
+          <label><input type="radio" name="Atr13" value="1">2</label>
+          <label><input type="radio" name="Atr13" value="2">3</label>
+          <label><input type="radio" name="Atr13" value="3">4</label>
+          <label><input type="radio" name="Atr13" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>14. Most of our goals for people (children, friends, etc.) are the same.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr14" value="0">1</label>
+          <label><input type="radio" name="Atr14" value="1">2</label>
+          <label><input type="radio" name="Atr14" value="2">3</label>
+          <label><input type="radio" name="Atr14" value="3">4</label>
+          <label><input type="radio" name="Atr14" value="4">5</label>
+          <br />
+          <h5>15. Our dreams are similar and harmonious.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr15" value="0">1</label>
+          <label><input type="radio" name="Atr15" value="1">2</label>
+          <label><input type="radio" name="Atr15" value="2">3</label>
+          <label><input type="radio" name="Atr15" value="3">4</label>
+          <label><input type="radio" name="Atr15" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>16. We're compatible about what love should be.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr16" value="0">1</label>
+          <label><input type="radio" name="Atr16" value="1">2</label>
+          <label><input type="radio" name="Atr16" value="2">3</label>
+          <label><input type="radio" name="Atr16" value="3">4</label>
+          <label><input type="radio" name="Atr16" value="4">5</label>
+          <br />
+          <h5>17. We share the same views about being happy in our life.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr17" value="0">1</label>
+          <label><input type="radio" name="Atr17" value="1">2</label>
+          <label><input type="radio" name="Atr17" value="2">3</label>
+          <label><input type="radio" name="Atr17" value="3">4</label>
+          <label><input type="radio" name="Atr17" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>18. My spouse and I have similar ideas about how marriage should be.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr18" value="0">1</label>
+          <label><input type="radio" name="Atr18" value="1">2</label>
+          <label><input type="radio" name="Atr18" value="2">3</label>
+          <label><input type="radio" name="Atr18" value="3">4</label>
+          <label><input type="radio" name="Atr18" value="4">5</label>
+          <br />
+          <h5>19. My spouse and I have similar ideas about how roles should be in marriage.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr19" value="0">1</label>
+          <label><input type="radio" name="Atr19" value="1">2</label>
+          <label><input type="radio" name="Atr19" value="2">3</label>
+          <label><input type="radio" name="Atr19" value="3">4</label>
+          <label><input type="radio" name="Atr19" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>20. My spouse and I have similar values in trust.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr20" value="0">1</label>
+          <label><input type="radio" name="Atr20" value="1">2</label>
+          <label><input type="radio" name="Atr20" value="2">3</label>
+          <label><input type="radio" name="Atr20" value="3">4</label>
+          <label><input type="radio" name="Atr20" value="4">5</label>
+          <br />
+          <h5>21. I know exactly what my spouse likes.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr21" value="0">1</label>
+          <label><input type="radio" name="Atr21" value="1">2</label>
+          <label><input type="radio" name="Atr21" value="2">3</label>
+          <label><input type="radio" name="Atr21" value="3">4</label>
+          <label><input type="radio" name="Atr21" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>22. I know how my spouse wants to be taken care of when she/he sick.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr22" value="0">1</label>
+          <label><input type="radio" name="Atr22" value="1">2</label>
+          <label><input type="radio" name="Atr22" value="2">3</label>
+          <label><input type="radio" name="Atr22" value="3">4</label>
+          <label><input type="radio" name="Atr22" value="4">5</label>
+          <br />
+          <h5>23. I know my spouse's favorite food.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr23" value="0">1</label>
+          <label><input type="radio" name="Atr23" value="1">2</label>
+          <label><input type="radio" name="Atr23" value="2">3</label>
+          <label><input type="radio" name="Atr23" value="3">4</label>
+          <label><input type="radio" name="Atr23" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>24. I can tell you what kind of stress my spouse is facing in her/his life.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr24" value="0">1</label>
+          <label><input type="radio" name="Atr24" value="1">2</label>
+          <label><input type="radio" name="Atr24" value="2">3</label>
+          <label><input type="radio" name="Atr24" value="3">4</label>
+          <label><input type="radio" name="Atr24" value="4">5</label>
+          <br />
+          <h5>25. I have knowledge of my spouse's inner world.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr25" value="0">1</label>
+          <label><input type="radio" name="Atr25" value="1">2</label>
+          <label><input type="radio" name="Atr25" value="2">3</label>
+          <label><input type="radio" name="Atr25" value="3">4</label>
+          <label><input type="radio" name="Atr25" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>26. I know my spouse's basic anxieties.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr26" value="0">1</label>
+          <label><input type="radio" name="Atr26" value="1">2</label>
+          <label><input type="radio" name="Atr26" value="2">3</label>
+          <label><input type="radio" name="Atr26" value="3">4</label>
+          <label><input type="radio" name="Atr26" value="4">5</label>
+          <br />
+          <h5>27. I know what my spouse's current sources of stress are.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr27" value="0">1</label>
+          <label><input type="radio" name="Atr27" value="1">2</label>
+          <label><input type="radio" name="Atr27" value="2">3</label>
+          <label><input type="radio" name="Atr27" value="3">4</label>
+          <label><input type="radio" name="Atr27" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>28. I know my spouse's hopes and wishes.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr28" value="0">1</label>
+          <label><input type="radio" name="Atr28" value="1">2</label>
+          <label><input type="radio" name="Atr28" value="2">3</label>
+          <label><input type="radio" name="Atr28" value="3">4</label>
+          <label><input type="radio" name="Atr28" value="4">5</label>
+          <br />
+          <h5>29. I know my spouse very well.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr29" value="0">1</label>
+          <label><input type="radio" name="Atr29" value="1">2</label>
+          <label><input type="radio" name="Atr29" value="2">3</label>
+          <label><input type="radio" name="Atr29" value="3">4</label>
+          <label><input type="radio" name="Atr29" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>30. I know my spouse's friends and their social relationships.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr30" value="0">1</label>
+          <label><input type="radio" name="Atr30" value="1">2</label>
+          <label><input type="radio" name="Atr30" value="2">3</label>
+          <label><input type="radio" name="Atr30" value="3">4</label>
+          <label><input type="radio" name="Atr30" value="4">5</label>
+          <br />
+          <h5>31. I feel aggressive when I argue with my spouse.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr31" value="0">1</label>
+          <label><input type="radio" name="Atr31" value="1">2</label>
+          <label><input type="radio" name="Atr31" value="2">3</label>
+          <label><input type="radio" name="Atr31" value="3">4</label>
+          <label><input type="radio" name="Atr31" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>32. When discussing with my spouse, I usually use expressions such as "you always" or "you never" .</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr32" value="0">1</label>
+          <label><input type="radio" name="Atr32" value="1">2</label>
+          <label><input type="radio" name="Atr32" value="2">3</label>
+          <label><input type="radio" name="Atr32" value="3">4</label>
+          <label><input type="radio" name="Atr32" value="4">5</label>
+          <br />
+          <h5>33. I can use negative statements about my spouse's personality during our discussions.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr33" value="0">1</label>
+          <label><input type="radio" name="Atr33" value="1">2</label>
+          <label><input type="radio" name="Atr33" value="2">3</label>
+          <label><input type="radio" name="Atr33" value="3">4</label>
+          <label><input type="radio" name="Atr33" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>34. I can use offensive expressions during our arguments.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr34" value="0">1</label>
+          <label><input type="radio" name="Atr34" value="1">2</label>
+          <label><input type="radio" name="Atr34" value="2">3</label>
+          <label><input type="radio" name="Atr34" value="3">4</label>
+          <label><input type="radio" name="Atr34" value="4">5</label>
+          <br />
+          <h5>35. I can insult my spouse during our arguments.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr35" value="0">1</label>
+          <label><input type="radio" name="Atr35" value="1">2</label>
+          <label><input type="radio" name="Atr35" value="2">3</label>
+          <label><input type="radio" name="Atr35" value="3">4</label>
+          <label><input type="radio" name="Atr35" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>36. I can be humiliating when we argue.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr36" value="0">1</label>
+          <label><input type="radio" name="Atr36" value="1">2</label>
+          <label><input type="radio" name="Atr36" value="2">3</label>
+          <label><input type="radio" name="Atr36" value="3">4</label>
+          <label><input type="radio" name="Atr36" value="4">5</label>
+          <br />
+          <h5>37. My arguments with my spouse are not calm.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr37" value="0">1</label>
+          <label><input type="radio" name="Atr37" value="1">2</label>
+          <label><input type="radio" name="Atr37" value="2">3</label>
+          <label><input type="radio" name="Atr37" value="3">4</label>
+          <label><input type="radio" name="Atr37" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>38. I hate my spouse's way of openning a subject.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr38" value="0">1</label>
+          <label><input type="radio" name="Atr38" value="1">2</label>
+          <label><input type="radio" name="Atr38" value="2">3</label>
+          <label><input type="radio" name="Atr38" value="3">4</label>
+          <label><input type="radio" name="Atr38" value="4">5</label>
+          <br />
+          <h5>39. Our arguments often occur suddenly.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr39" value="0">1</label>
+          <label><input type="radio" name="Atr39" value="1">2</label>
+          <label><input type="radio" name="Atr39" value="2">3</label>
+          <label><input type="radio" name="Atr39" value="3">4</label>
+          <label><input type="radio" name="Atr39" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>40. We just start an argument before I know what's going on.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr40" value="0">1</label>
+          <label><input type="radio" name="Atr40" value="1">2</label>
+          <label><input type="radio" name="Atr40" value="2">3</label>
+          <label><input type="radio" name="Atr40" value="3">4</label>
+          <label><input type="radio" name="Atr40" value="4">5</label>
+          <br />
+          <h5>41. When I talk to my spouse about something, I can suddenly lose my cool.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr41" value="0">1</label>
+          <label><input type="radio" name="Atr41" value="1">2</label>
+          <label><input type="radio" name="Atr41" value="2">3</label>
+          <label><input type="radio" name="Atr41" value="3">4</label>
+          <label><input type="radio" name="Atr41" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>42. When I argue with my spouse, I leave and don't say a word.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr42" value="0">1</label>
+          <label><input type="radio" name="Atr42" value="1">2</label>
+          <label><input type="radio" name="Atr42" value="2">3</label>
+          <label><input type="radio" name="Atr42" value="3">4</label>
+          <label><input type="radio" name="Atr42" value="4">5</label>
+          <br />
+          <h5>43. I mostly stay silent to calm the environment a little bit.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr43" value="0">1</label>
+          <label><input type="radio" name="Atr43" value="1">2</label>
+          <label><input type="radio" name="Atr43" value="2">3</label>
+          <label><input type="radio" name="Atr43" value="3">4</label>
+          <label><input type="radio" name="Atr43" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>44. Sometimes I think it's good for me to leave home for a while.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr44" value="0">1</label>
+          <label><input type="radio" name="Atr44" value="1">2</label>
+          <label><input type="radio" name="Atr44" value="2">3</label>
+          <label><input type="radio" name="Atr44" value="3">4</label>
+          <label><input type="radio" name="Atr44" value="4">5</label>
+          <br />
+          <h5>45. I'd rather stay silent than argue with my spouse.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr45" value="0">1</label>
+          <label><input type="radio" name="Atr45" value="1">2</label>
+          <label><input type="radio" name="Atr45" value="2">3</label>
+          <label><input type="radio" name="Atr45" value="3">4</label>
+          <label><input type="radio" name="Atr45" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>46. Even if I'm right in the argument, I stay silent to hurt my spouse.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr46" value="0">1</label>
+          <label><input type="radio" name="Atr46" value="1">2</label>
+          <label><input type="radio" name="Atr46" value="2">3</label>
+          <label><input type="radio" name="Atr46" value="3">4</label>
+          <label><input type="radio" name="Atr46" value="4">5</label>
+          <br />
+          <h5>47. When I argue with my spouse, I stay silent because I am afraid of not being able to control my anger.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr47" value="0">1</label>
+          <label><input type="radio" name="Atr47" value="1">2</label>
+          <label><input type="radio" name="Atr47" value="2">3</label>
+          <label><input type="radio" name="Atr47" value="3">4</label>
+          <label><input type="radio" name="Atr47" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>48. I feel right in our arguments.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr48" value="0">1</label>
+          <label><input type="radio" name="Atr48" value="1">2</label>
+          <label><input type="radio" name="Atr48" value="2">3</label>
+          <label><input type="radio" name="Atr48" value="3">4</label>
+          <label><input type="radio" name="Atr48" value="4">5</label>
+          <br />
+          <h5>49. I have nothing to do with what I've been accused of.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr49" value="0">1</label>
+          <label><input type="radio" name="Atr49" value="1">2</label>
+          <label><input type="radio" name="Atr49" value="2">3</label>
+          <label><input type="radio" name="Atr49" value="3">4</label>
+          <label><input type="radio" name="Atr49" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>50. I'm not actually the one who's guilty about what I'm accused of.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr50" value="0">1</label>
+          <label><input type="radio" name="Atr50" value="1">2</label>
+          <label><input type="radio" name="Atr50" value="2">3</label>
+          <label><input type="radio" name="Atr50" value="3">4</label>
+          <label><input type="radio" name="Atr50" value="4">5</label>
+          <br />
+          <h5>51. I'm not the one who's wrong about problems at home.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr51" value="0">1</label>
+          <label><input type="radio" name="Atr51" value="1">2</label>
+          <label><input type="radio" name="Atr51" value="2">3</label>
+          <label><input type="radio" name="Atr51" value="3">4</label>
+          <label><input type="radio" name="Atr51" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>52. I wouldn't hesitate to tell my spouse about her/his inadequacy.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr52" value="0">1</label>
+          <label><input type="radio" name="Atr52" value="1">2</label>
+          <label><input type="radio" name="Atr52" value="2">3</label>
+          <label><input type="radio" name="Atr52" value="3">4</label>
+          <label><input type="radio" name="Atr52" value="4">5</label>
+          <br />
+          <h5>53. When we argue, I remind my spouse of her/his inadequacy.</h5>
+          <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+          <!-- The value is which answer the choice corresponds to. -->
+          <label><input type="radio" name="Atr53" value="0">1</label>
+          <label><input type="radio" name="Atr53" value="1">2</label>
+          <label><input type="radio" name="Atr53" value="2">3</label>
+          <label><input type="radio" name="Atr53" value="3">4</label>
+          <label><input type="radio" name="Atr53" value="4">5</label>
+          <br />
+          <!-- Question 2 -->
+          <h5>54. I'm not afraid to tell my spouse about her/his incompetence.</h5>
+          <!-- Here are the choices for the second question. -->
+          <label><input type="radio" name="Atr54" value="0">1</label>
+          <label><input type="radio" name="Atr54" value="1">2</label>
+          <label><input type="radio" name="Atr54" value="2">3</label>
+          <label><input type="radio" name="Atr54" value="3">4</label>
+          <label><input type="radio" name="Atr54" value="4">5</label>
+          <br />
+          
+          <button type="submit" id="submit">Submit</button>
+          <button type="reset" id="reset">Reset</button>
         </form>
       </div>
-    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
