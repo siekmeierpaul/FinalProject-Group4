@@ -45,7 +45,7 @@ def predict():
     else:
         print("Something didn't work")
 
-    webpage = render_template("results.html", result = result)
+    webpage = render_template("data.html", result = result)
     return webpage
 
 if __name__ == '__main__':
