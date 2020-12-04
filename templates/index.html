@@ -12,25 +12,25 @@
 
     <link rel='shortcut icon' type='image/png' href={{ url_for('static', filename='brokenHeart.png') }}>
 
-    <title>Divorce Predictor</title>
+    <title>Predictor Summary</title>
 
   </head>
   <body>
-    <div class= 'container'>
-      <div class='mynav'>
-        <nav class="navbar navbar-expand-lg navbar-light" >
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="/">Summary</a>
-              <a class="navbar-brand" href="/data"><img src={{ url_for('static', filename='brokenHeart.png') }} class='img-responsive'>Divorce Predictor</a>
-              <a class="nav-link" href="/results">Result Analysis</a>
-            </div>
+    <div class='mynav'>
+      <nav class="navbar navbar-expand-lg navbar-light" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/">Summary</a>
+            <a class="navbar-brand" href="/data"><img src={{ url_for('static', filename='brokenHeart.png') }} class='img-responsive'>Divorce Predictor</a>
+            <a class="nav-link" href="/results">Result Analysis</a>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
+    </div>
+    <div class= 'container'>
       <div class='row'>
         <div class='col-md-12'>
           <div class="jumbotron">
@@ -42,8 +42,38 @@
         </div>
       </div>
       <div class='row'>
+        <div class='col-md-8'>
+          <p>For our project we decided to make a supervised machine learning model that could make a prediction on the input values
+             of a survey. This prediction would tell the survey taker if their relationship is doomed for divorce or not.</p>
+          <br />
+          <p>We started by looking at<a href="https://archive.ics.uci.edu/ml/datasets/Divorce+Predictors+data+set#"> data</a> from a survey taken in Turkey that was designed by Gottman couples
+             therapy. The good thing about this data set is that it already had numerical inputs of zero through
+             four. Therefore as a group we had very little data cleaning to do. The survey was designed to
+             formulate whether a person would get divorced, or not, based on their answers of how much they agree
+             with a series of 54 statements. The survey was taken by individuals that were either already
+             divorced, and answering on behalf of their failed marriage, or people that were still in loving committed marriages.</p>
+          <br />
+          <p>Using the information of whether the subject taking the survey was either married or divorced,
+             we were able to train our divorce predictor by using a logistic regression supervised machine
+             learning model by way of scikit-learn on the data provided. Once we had our model we attached
+             it to the survey in the Divorce Predictor webpage so that anyone who visits our site can learn
+             the fate of their relationship.</p>
+          <br />
+        </div>
+        <div class='col-md-4'>
+          <img src='../static/AI-brain.png'>
+        </div>
         <div class='col-md-12'>
-          <p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p>
+          <h5>Things to consider:</h5>
+          <p>The Survey was translated from Turkish to English, therefore we had to change some of the language
+             in order to make it more easily readable. Everytime they used the word discussion we changed the
+             word to argument as we thought it fit better in the context of the statement. Additionally, the word
+             spouse is used in place of wife to be more inclusive to all genders and relationship types.
+             (wife is also used irregularly in the translated survey)</p>
+          <br />
+          <p>Also the survey is a very small sample size of about 170 subjects so any conclusions can be taken with
+             a grain of salt. (Even with the small sample size the results seem to be in line with the world average
+             of Divorce rates of around 50%)</p>
         </div>
       </div>
     </div>
