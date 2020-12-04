@@ -37,10 +37,10 @@ def predict():
     print(prediction)
 
     if prediction == 1:
-        result = "Divorced"
+        result = "We predict that your relationship will result in a divorce..."
         print(result)
     elif prediction == 0:
-        result = "Married"
+        result = "We predict that you will stay married together!"
         print(result)
     else:
         print("Something didn't work")
